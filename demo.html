@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ在线客服示例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .button-group {
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-btn:active {
+            transform: translateY(0);
+        }
+
+        .notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .notice strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 QQ在线客服插件演示</h1>
+        <p>这是一个纯JavaScript实现的QQ在线客服悬浮窗，<strong>无需依赖jQuery</strong>，开箱即用！</p>
+
+        <h2>✨ 主要特性</h2>
+        <ul class="feature-list">
+            <li>纯原生JavaScript，零依赖</li>
+            <li>自动悬浮在页面右下角</li>
+            <li>支持多个QQ客服账号</li>
+            <li>显示客服电话</li>
+            <li>现代化渐变UI设计</li>
+            <li>平滑过渡动画效果</li>
+            <li>支持悬停/点击两种交互模式</li>
+            <li>响应式设计，兼容移动端</li>
+        </ul>
+
+        <h2>🚀 使用方法</h2>
+        <p>只需在HTML中引入一个JS文件即可：</p>
+        <div class="code-block">
+            <code>&lt;script src="qq-customer-service.js"&gt;&lt;/script&gt;</code>
+        </div>
+
+        <h2>⚙️ 自定义配置</h2>
+        <p>如需自定义，请编辑 <code>qq-customer-service.js</code> 文件中的配置项：</p>
+        <div class="code-block">
+            <code>const config = {
+    qqs: [
+        { name: '售前客服', qq: '123456789' },  // 改成你的QQ号
+        { name: '售后客服', qq: '987654321' }
+    ],
+    tel: '400-123-4567',  // 客服电话
+    position: {
+        bottom: '80px',   // 距离底部
+        right: '20px'     // 距离右侧
+    },
+    autoShow: true,       // 是否自动展开
+    hoverToShow: true     // true=悬停展开, false=点击展开
+};</code>
+        </div>
+
+        <div class="notice">
+            <strong>💡 提示：</strong>
+            请查看页面右下角，客服悬浮窗已经自动加载！鼠标移上去试试看。
+        </div>
+
+        <h2>🎮 API 控制</h2>
+        <p>通过JavaScript API控制客服窗口：</p>
+        <div class="button-group">
+            <button class="demo-btn" onclick="QQCustomerService.show()">显示客服窗口</button>
+            <button class="demo-btn" onclick="QQCustomerService.hide()">隐藏客服窗口</button>
+            <button class="demo-btn" onclick="QQCustomerService.remove()">完全移除</button>
+        </div>
+
+        <h2>📝 常见问题</h2>
+        <p><strong>Q: 如何修改QQ号？</strong></p>
+        <p>A: 编辑 <code>qq-customer-service.js</code> 文件中的 <code>qqs</code> 数组，将 <code>qq</code> 字段改为你的QQ号。</p>
+
+        <p><strong>Q: 如何改变位置？</strong></p>
+        <p>A: 修改 <code>config.position</code> 中的 <code>bottom</code> 和 <code>right</code> 值。</p>
+
+        <p><strong>Q: 如何改为点击展开？</strong></p>
+        <p>A: 将 <code>hoverToShow</code> 设置为 <code>false</code>。</p>
+
+        <h2>📄 文件说明</h2>
+        <ul class="feature-list">
+            <li><strong>qq-customer-service.js</strong> - 主插件文件（包含样式和逻辑）</li>
+            <li><strong>demo.html</strong> - 演示页面（当前页面）</li>
+        </ul>
+
+        <p style="margin-top: 50px; text-align: center; color: #999;">
+            Made with ❤️ | 纯JavaScript实现 | 无依赖 | 开箱即用
+        </p>
+    </div>
+
+    <!-- 引入QQ客服插件 -->
+    <script src="qq-customer-service.js"></script>
+
+    <script>
+        // 页面加载完成后的提示
+        window.addEventListener('load', function() {
+            console.log('QQ客服插件已加载！');
+            console.log('可用API: QQCustomerService.show() / hide() / remove()');
+        });
+    </script>
+</body>
+</html>
