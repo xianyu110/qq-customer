@@ -17,15 +17,25 @@
 
 ## 快速开始
 
-### 安装
+### 方式一: 通过 CDN 引入(推荐)
 
-只需在 HTML 页面中引入 JavaScript 文件:
+直接在 HTML 页面中引入 CDN 链接:
+
+```html
+<script src="https://xianyu110.github.io/qq-customer/customer-service-modal.js"></script>
+```
+
+### 方式二: 本地引入
+
+下载 `customer-service-modal.js` 文件到你的项目中,然后引入:
 
 ```html
 <script src="customer-service-modal.js"></script>
 ```
 
 ### 配置
+
+如果使用 CDN 方式,你需要 fork 本项目并修改配置,或者下载文件到本地修改。
 
 在 `customer-service-modal.js` 中修改配置项:
 
@@ -35,6 +45,25 @@ const config = {
     workTime: '7×24小时在线服务',                    // 工作时间说明
     buttonColor: '#52c41a'                          // 按钮主题色
 };
+```
+
+### 完整示例
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的网站</title>
+</head>
+<body>
+    <!-- 你的网站内容 -->
+
+    <!-- 引入客服组件 -->
+    <script src="https://xianyu110.github.io/qq-customer/customer-service-modal.js"></script>
+</body>
+</html>
 ```
 
 ## 文件说明
